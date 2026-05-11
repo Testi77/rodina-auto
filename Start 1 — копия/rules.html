@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- SEO -->
+<meta name="description" content="Rodina Auto — площадка для покупки и продажи автомобилей на серверах Rodina RolePlay">
+<meta name="keywords" content="Rodina RolePlay, SAMP, купить авто, продать авто, GTA SAMP">
+<meta property="og:title" content="Rodina Auto">
+<meta property="og:description" content="Площадка для покупки и продажи автомобилей на серверах Rodina RolePlay">
+<meta property="og:url" content="https://rodinaauto.netlify.app">
+<meta property="og:type" content="website">
+  <title>Правила размещения — Rodina Auto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .section-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #dc2626;
+      opacity: 0.15;
+      line-height: 1;
+      user-select: none;
+    }
+    .section-card {
+      position: relative;
+      border-left: 3px solid #dc2626;
+      transition: border-color 0.2s;
+    }
+    .section-card:hover { border-color: #ef4444; }
+    .badge {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #171717;
+      border-radius: 10px;
+      border: 1px solid #262626;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #dc2626; flex-shrink: 0; }
+  </style>
+</head>
+
+<body class="bg-black text-white min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <div class="p-4 border-b border-neutral-800 flex items-center gap-4 bg-black">
+    <h1 onclick="window.location.href='index.html'"
+    class="text-2xl font-bold text-red-600 whitespace-nowrap cursor-pointer hover:text-red-500 active:text-red-600 transition flex items-center gap-2">
+  Rodina Auto
+  <span class="text-xs font-semibold bg-neutral-800 text-neutral-400 px-2 py-0.5 rounded-full border border-neutral-700">
+    beta
+  </span>
+</h1>
+    <span class="text-neutral-600 text-sm">/ Правила размещения объявлений</span>
+  </div>
+
+  <main class="flex-1 max-w-3xl mx-auto w-full px-4 py-10">
+
+    <!-- ЗАГОЛОВОК -->
+    <div class="mb-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="badge">Документ</span>
+        <span class="text-neutral-500 text-sm">Последнее обновление: 2026</span>
+      </div>
+      <h1 class="text-4xl font-black mb-3">Правила размещения объявлений</h1>
+      <p class="text-neutral-400 text-base leading-relaxed">
+        Соблюдение этих правил делает площадку удобной для всех.
+        Нарушение может привести к удалению объявления или блокировке аккаунта.
+      </p>
+    </div>
+
+    <!-- КРАТКО -->
+    <div class="bg-neutral-900 border-2 border-red-600/30 rounded-2xl p-5 mb-10">
+      <p class="text-sm text-red-500 font-semibold mb-3 uppercase tracking-wider">Кратко о главном</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div class="item"><div class="dot"></div><span class="text-sm">Только реальные объявления</span></div>
+        <div class="item"><div class="dot"></div><span class="text-sm">Одно объявление — одно авто</span></div>
+        <div class="item"><div class="dot"></div><span class="text-sm">Актуальная цена и фото</span></div>
+        <div class="item"><div class="dot"></div><span class="text-sm">Корректные контакты</span></div>
+      </div>
+    </div>
+
+    <!-- СЕКЦИИ -->
+    <div class="space-y-6">
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">1</div>
+          <h2 class="text-xl font-bold">Общие требования</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+          Каждое объявление должно соответствовать следующим требованиям:
+        </p>
+        <div class="space-y-2">
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Объявление должно быть реальным — авто действительно продаётся</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Цена должна соответствовать действительности</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Указан правильный сервер где продаётся авто</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Указан хотя бы один способ связи</span></div>
+        </div>
+      </div>
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">2</div>
+          <h2 class="text-xl font-bold">Фотографии</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+          Фотографии — важная часть объявления. Требования к фото:
+        </p>
+        <div class="space-y-2">
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Фото должно быть вашего автомобиля, а не из интернета</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Фото должно быть чётким и хорошо освещённым</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Максимум 10 фотографий на одно объявление</span></div>
+        </div>
+        <div class="mt-3 bg-black/50 rounded-xl p-4 border border-neutral-800">
+          <p class="text-red-500 text-xs font-semibold uppercase tracking-wider mb-2">Совет</p>
+          <p class="text-white text-sm">Скриншот из игры с хорошим ракурсом и освещением — лучший вариант.</p>
+        </div>
+      </div>
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">3</div>
+          <h2 class="text-xl font-bold">Что запрещено</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed mb-3">Строго запрещается:</p>
+        <div class="space-y-2">
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Размещать фейковые или несуществующие объявления</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Дублировать одно и то же объявление несколько раз</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Указывать заведомо неверную цену или характеристики</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Размещать рекламу сторонних сервисов</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Использовать оскорбительные названия или описания</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Продавать авто которое уже продано</span></div>
+        </div>
+      </div>
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">4</div>
+          <h2 class="text-xl font-bold">Актуальность объявлений</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Пожалуйста, удаляйте объявление сразу после продажи автомобиля.
+          Неактуальные объявления создают неудобства для покупателей и засоряют площадку.
+        </p>
+        <p class="text-neutral-400 text-sm leading-relaxed mt-2">
+          Администрация вправе удалить объявление если оно явно устарело или нарушает правила.
+        </p>
+      </div>
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">5</div>
+          <h2 class="text-xl font-bold">Контакты</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed mb-3">
+          Указывайте только реальные и актуальные контакты:
+        </p>
+        <div class="space-y-2">
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Игровой ник должен существовать на указанном сервере</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Игровой номер телефона должен быть активен</span></div>
+          <div class="item"><div class="dot"></div><span class="text-sm text-neutral-300">Telegram, Discord и VK должны быть рабочими</span></div>
+        </div>
+      </div>
+
+      <div class="section-card bg-neutral-900 rounded-2xl p-6 pl-7">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="section-number">6</div>
+          <h2 class="text-xl font-bold">Последствия нарушений</h2>
+        </div>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          При нарушении правил администрация вправе:
+        </p>
+        <div class="space-y-2 mt-3">
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Удалить объявление без предупреждения</span></div>
+          <div class="item"><div class="dot" style="background:#ef4444;"></div><span class="text-sm text-neutral-300">Заблокировать аккаунт нарушителя</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 text-center">
+      <button onclick="window.location.href='index.html'"
+        class="bg-red-600 px-8 py-3 rounded-full hover:bg-red-500 transition font-semibold">
+        Вернуться на главную
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-neutral-800 mt-10 bg-black">
+    <div class="max-w-2xl mx-auto px-6 py-6 flex flex-col items-center text-center gap-4">
+      <h2 class="text-2xl font-bold" style="color: #dc2626;">Rodina Auto</h2>
+      <p class="text-neutral-600 text-xs">© 2026 Rodina Auto — Не является частью Arizona Games</p>
+    </div>
+  </footer>
+
+</body>
+</html>

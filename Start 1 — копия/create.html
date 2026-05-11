@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- SEO -->
+<meta name="description" content="Rodina Auto — площадка для покупки и продажи автомобилей на серверах Rodina RolePlay">
+<meta name="keywords" content="Rodina RolePlay, SAMP, купить авто, продать авто, GTA SAMP">
+<meta property="og:title" content="Rodina Auto">
+<meta property="og:description" content="Площадка для покупки и продажи автомобилей на серверах Rodina RolePlay">
+<meta property="og:url" content="https://rodinaauto.netlify.app">
+<meta property="og:type" content="website">
+  <title>Разместить объявление</title>
+  <style>
+      .fuelBtn.active:hover,
+      .condition-btn.active:hover {
+        background-color: rgb(220 38 38);
+      }
+
+      .fuelBtn.active,
+      .condition-btn.active {
+        pointer-events: none;
+      }
+
+      .imageMode-btn:not(.active):hover {
+        background-color: rgb(82 82 82) !important;
+      }
+
+      .imageMode-btn.active:hover {
+        background-color: rgb(220 38 38) !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .imageMode-btn.active {
+        pointer-events: none;
+      }
+
+      body.using-keyboard input:not(:focus),
+      body.using-keyboard textarea:not(:focus) {
+      border-color: rgb(64 64 64) !important;
+      box-shadow: none !important;
+      }
+    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+  <body class="bg-black text-white relative">
+
+    <!-- КНОПКА ЗАКРЫТЬ -->
+    <button onclick="window.goBack()"
+      class="absolute top-4 right-4 bg-black/70 text-white rounded-full w-10 h-10 text-xl z-50 hover:bg-red-600 transition hover:scale-110 transition">
+      ✕
+    </button>
+
+  <div class="max-w-2xl mx-auto p-6">
+
+    <h1 id="formTitle" class="text-3xl font-bold mb-6">Новое объявление</h1>
+
+    <!-- ОСНОВНОЕ -->
+    <div class="bg-neutral-900 p-5 rounded-2xl mb-6 border-2 border-neutral-700">
+      <span onclick="window.location.href='index.html'"
+      class="text-lg font-semibold text-red-600 mb-4 cursor-pointer hover:text-red-500 active:text-red-600 transition inline-flex items-center gap-2">
+      RodinaAuto
+      <span class="text-xs font-semibold bg-neutral-800 text-neutral-400 px-2 py-0.5 rounded-full border border-neutral-700">
+        beta
+      </span>
+</span>
+
+      <!-- СЕРВЕР -->
+      <div class="w-full mb-3">
+
+        <label class="block text-base mb-3">
+          Сервер
+        </label>
+
+        <button id="serverButton" onclick="toggleServerDropdown()"
+        class="w-full p-3 rounded-lg bg-black border-2 border-neutral-700 text-left flex justify-between items-center
+                         hover:border-red-600 focus:border-red-600 outline-none transition">
+
+          <span id="selectedServerTextForm">Выберите сервер</span>
+
+          <span id="serverArrow" class="text-red-600 text-sm">▼</span>
+        </button>
+
+        <!-- dropdown -->
+        <div id="serverDropdown"
+                  class="hidden mt-2 bg-neutral-800 rounded-lg p-2 space-y-1 border-2 border-red-600">
+
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Приморский', event)" onmouseenter="highlightItem(0)">Приморский</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Южный', event)" onmouseenter="highlightItem(1)">Южный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Северный', event)" onmouseenter="highlightItem(2)">Северный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Центральный', event)" onmouseenter="highlightItem(3)">Центральный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Федеральный', event)" onmouseenter="highlightItem(4)">Федеральный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Восточный', event)" onmouseenter="highlightItem(5)">Восточный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Западный', event)" onmouseenter="highlightItem(6)">Западный</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('СПБ (Моб.)', event)" onmouseenter="highlightItem(7)">СПБ (Моб.)</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Москва (Моб.)', event)" onmouseenter="highlightItem(8)">Москва (Моб.)</div>
+          <div class="dropdownItem p-2 rounded cursor-pointer transition"
+               onclick="selectServerForm('Екб (Моб.)', event)" onmouseenter="highlightItem(9)">Екб (Моб.)</div>
+
+        </div>
+
+      </div>
+
+      <label class="block text-base mb-3">
+              Название транспортного средства
+            </label>
+            <div class="relative mb-3">
+              <input id="nameInput" maxlength="30" type="text" placeholder="Например: BMW M5 Stingray"
+                class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                oninput="document.getElementById('clearName').classList.toggle('hidden', this.value.length === 0)">
+              <button id="clearName" type="button" onclick="document.getElementById('nameInput').value='';this.classList.add('hidden')"
+                class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                ✕
+              </button>
+            </div>
+
+            <div class="relative w-full mb-3">
+
+                      <label class="block text-base mb-3">
+                        Цена
+                      </label>
+                      <input
+                        id="priceInput"
+                        type="text"
+                        placeholder="Например: 1 000 000 ₽"
+                        oninput="formatPrice(this); document.getElementById('clearPrice').classList.toggle('hidden', this.value.length === 0)"
+                        class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                      />
+
+                      <span id="priceSymbol"
+                        class="absolute top-1/2 translate-y-[6px] text-red-600 font-semibold pointer-events-none hidden">
+                        ₽
+                      </span>
+
+                      <button id="clearPrice" type="button" onclick="document.getElementById('priceInput').value='';document.getElementById('priceSymbol').style.display='none';this.classList.add('hidden')"
+                        class="absolute right-3 top-1/2 translate-y-[6px] bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                        ✕
+                      </button>
+
+                    </div>
+
+
+
+                    <div class="relative w-full mb-3">
+
+                              <label class="block text-base mb-3">
+                                Пробег
+                              </label>
+                              <input
+                                id="mileageInput"
+                                type="text"
+                                placeholder="Например: 1 000 км"
+                                class="w-full mb-3 p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                              />
+
+                              <span id="kmSymbol"
+                                class="absolute top-1/2 translate-y-[6px] text-red-600 font-semibold pointer-events-none hidden">
+                                км
+                              </span>
+
+                              <button id="clearMileage" type="button" onclick="document.getElementById('mileageInput').value='';document.getElementById('kmSymbol').style.display='none';this.classList.add('hidden')"
+                                          class="absolute right-3 top-[48%] translate-y[1px] bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                                          ✕
+                                        </button>
+
+                            </div>
+
+                            <div class="flex items-center justify-between mb-3">
+                              <label class="block text-base">Номерной знак</label>
+                              <button type="button" id="noPlateBtn" onclick="toggleNoPlate()"
+                                class="text-sm px-3 py-1 rounded-lg bg-neutral-800 border-2 border-neutral-700 hover:border-red-600 transition text-neutral-400">
+                                Без номера
+                              </button>
+                            </div>
+                            <div class="relative mb-3">
+                              <input id="plateInput" maxlength="20" type="text" placeholder="Например: K777KK777"
+                                class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                                oninput="document.getElementById('clearPlate').classList.toggle('hidden', this.value.length === 0)">
+                              <button id="clearPlate" type="button" onclick="document.getElementById('plateInput').value='';this.classList.add('hidden')"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                                ✕
+                              </button>
+                            </div>
+
+        <div class="bg-neutral-900 p-4 rounded-xl border-2 border-neutral-800 space-y-3">
+
+          <p class="text-base">Фото автомобиля</p>
+
+          <!-- КНОПКИ ПЕРЕКЛЮЧЕНИЯ -->
+          <div class="flex gap-2">
+            <button type="button" onclick="setImageMode('file')" id="fileBtn"
+              class="imageMode-btn active flex-1 py-2 rounded-lg bg-red-600 hover:bg-red-600 text-white text-sm transition">
+               Загрузить
+            </button>
+
+            <button type="button" onclick="setImageMode('link')" id="linkBtn"
+              class="imageMode-btn flex-1 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-sm transition">
+               Ссылка
+            </button>
+          </div>
+
+          <!-- FILE -->
+                    <input type="file" id="fileInput" multiple
+                      accept="image/*"
+                      class="hidden">
+
+                      <label for="fileInput" id="dropZone"
+                                            class="flex flex-col items-center justify-center gap-2 w-full py-5 rounded-lg
+                                                   bg-neutral-800 border-2 border-dashed border-neutral-700
+                                                   hover:border-red-600 hover:bg-neutral-700
+                                                   cursor-pointer transition text-sm text-neutral-300">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-600" fill="none"
+                                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                              <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0L8 8m4-4l4 4"/>
+                                            </svg>
+
+                                            <span>Выбрать фото или перетащите сюда</span>
+
+                                          </label>
+
+          <!-- LINK -->
+        <div id="linkBlock" class="space-y-2 hidden">
+          <div id="linksContainer" class="space-y-2">
+                      <div class="relative">
+                        <input type="text" placeholder="Вставь ссылку на фото"
+                          class="imageLink w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none text-white"
+                          oninput="this.nextElementSibling.classList.toggle('hidden', this.value.length === 0)">
+                        <button type="button" onclick="this.previousElementSibling.value='';this.classList.add('hidden');renderPreview()"
+                          class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+
+          <button type="button" onclick="addLinkInput()"
+            class="mt-2 bg-neutral-700 hover:bg-neutral-600 px-3 py-2 rounded">
+            + Добавить ещё ссылку
+          </button>
+        </div>
+          <!-- PREVIEW -->
+          <div id="previewContainer"
+               class="flex gap-2 overflow-x-auto pb-2 hidden">
+          </div>
+
+        </div>
+    </div>
+
+    <!-- СОСТОЯНИЕ -->
+    <div class="bg-neutral-900 p-5 rounded-2xl mb-6 border-2 border-neutral-700">
+      <h2 class="text-lg font-semibold mb-4">Состояние</h2>
+
+      <div class="flex gap-3">
+        <button onclick="selectCondition('Идеальное', this)"
+          class="condition-btn flex-1 p-3 rounded-lg bg-neutral-800 hover:bg-neutral-700">
+          Идеальное
+        </button>
+
+        <button onclick="selectCondition('Обычное', this)"
+          class="condition-btn flex-1 p-3 rounded-lg bg-neutral-800 hover:bg-neutral-700">
+          Обычное
+        </button>
+
+        <button onclick="selectCondition('Хлам', this)"
+          class="condition-btn flex-1 p-3 rounded-lg bg-neutral-800 hover:bg-neutral-700">
+          Хлам
+        </button>
+
+        <button onclick="selectCondition('Неопределённое', this)"
+          class="condition-btn p-3 rounded-lg bg-neutral-800 hover:bg-neutral-700">
+          Неопределённое
+        </button>
+
+      </div>
+    </div>
+
+    <div id="ratingBlock" class="bg-neutral-900 p-5 rounded-2xl mb-6 hidden border-2 border-neutral-700">
+      <h2 class="text-lg font-semibold mb-4">Рейтинг состояния</h2>
+
+      <div class="relative">
+              <input
+                id="ratingInput"
+                type="text"
+                placeholder="Введите рейтинг транспортного средства (например 1234)"
+                oninput="this.value = this.value.replace(/\D/g, '').slice(0,4); document.getElementById('clearRating').classList.toggle('hidden', this.value.length === 0)"
+                class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+              />
+              <button id="clearRating" type="button" onclick="document.getElementById('ratingInput').value='';this.classList.add('hidden')"
+                class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                ✕
+              </button>
+            </div>
+    </div>
+
+    <!-- ТОПЛИВО -->
+    <div class="bg-neutral-900 p-5 rounded-2xl mb-6 border-2 border-neutral-700">
+      <h2 class="text-lg font-semibold mb-4">Тип топлива</h2>
+
+      <div class="grid grid-cols-3 gap-3">
+
+        <button type="button"
+          onclick="selectFuel('Бензин', this)"
+          class="fuelBtn px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 transition">
+          Бензин
+        </button>
+
+        <button type="button"
+          onclick="selectFuel('Дизель', this)"
+          class="fuelBtn px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 transition">
+          Дизель
+        </button>
+
+        <button type="button"
+          onclick="selectFuel('Электро', this)"
+          class="fuelBtn px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 transition">
+          Электро
+        </button>
+
+      </div>
+    </div>
+
+    <!-- КОММЕНТ -->
+    <div class="bg-neutral-900 p-5 rounded-2xl mb-6 border-2 border-neutral-700">
+          <h2 class="text-lg font-semibold mb-4">Комментарий</h2>
+          <div class="relative">
+            <textarea id="commentInput" rows="4" maxlength="300"
+              placeholder="Опишите транспортное средство..."
+              oninput="document.getElementById('commentCount').innerText = this.value.length; document.getElementById('clearComment').classList.toggle('hidden', this.value.length === 0)"
+              class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"></textarea>
+            <button id="clearComment" type="button" onclick="document.getElementById('commentInput').value='';document.getElementById('commentCount').innerText='0';this.classList.add('hidden')"
+              class="absolute right-3 top-3 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+              ✕
+            </button>
+          </div>
+          <p class="text-right text-xs text-neutral-400 mt-1">
+            <span id="commentCount">0</span>/300
+          </p>
+        </div>
+
+    <!-- КОНТАКТЫ -->
+    <div class="bg-neutral-900 p-5 rounded-2xl mb-6 border-2 border-neutral-700">
+      <h2 class="text-lg font-semibold mb-4">Контакты</h2>
+
+      <!-- ОСНОВНЫЕ -->
+
+      <label class="block text-base mb-3">
+              Игровой ник
+            </label>
+            <div class="relative mb-3">
+              <input id="gameInput" maxlength="20" type="text" placeholder="Например: Rodina_Auto"
+                class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                oninput="document.getElementById('clearGame').classList.toggle('hidden', this.value.length === 0)">
+              <button id="clearGame" type="button" onclick="document.getElementById('gameInput').value='';this.classList.add('hidden')"
+                class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                ✕
+              </button>
+            </div>
+
+            <label class="block text-base mb-3">
+                      Игровой номер телефона
+                    </label>
+                    <div class="relative mb-3">
+                      <input id="phoneInput" maxlength="20" type="text" placeholder="Например: 773377"
+                        oninput="this.value = this.value.replace(/\D/g, ''); document.getElementById('clearPhone').classList.toggle('hidden', this.value.length === 0)"
+                        class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none">
+                      <button id="clearPhone" type="button" onclick="document.getElementById('phoneInput').value='';this.classList.add('hidden')"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                        ✕
+                      </button>
+                    </div>
+
+      <!-- КНОПКА РАСКРЫТИЯ -->
+      <button type="button"
+              onclick="toggleExtraContacts()"
+              class="w-full flex justify-between items-center
+                     bg-neutral-800 px-5 py-3 rounded-xl
+                     border-2 border-neutral-700
+                     hover:border-red-600
+                     hover:ring-1 hover:ring-red-600
+                     focus:border-red-600
+                     focus:ring-1 focus:ring-red-600
+                     transition text-base outline-none">
+
+        <span>Расширенные контакты</span>
+        <span id="arrow" class="text-red-600 transition-transform duration-300">▼</span>
+      </button>
+
+      <!-- СКРЫТЫЙ БЛОК -->
+      <div id="extraContacts" class="hidden mt-3">
+
+        <label class="block text-base mb-3">
+                  Telegram
+                </label>
+                <div class="relative mb-3">
+                  <input id="tgInput" maxlength="20" type="text" placeholder="@username"
+                    class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                    oninput="document.getElementById('clearTg').classList.toggle('hidden', this.value.length === 0)">
+                  <button id="clearTg" type="button" onclick="document.getElementById('tgInput').value='';this.classList.add('hidden')"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                    ✕
+                  </button>
+                </div>
+
+                <label class="block text-base mb-3">
+                            Discord
+                          </label>
+                          <div class="relative mb-3">
+                            <input id="discordInput" maxlength="20" type="text" placeholder="username"
+                              class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                              oninput="document.getElementById('clearDiscord').classList.toggle('hidden', this.value.length === 0)">
+                            <button id="clearDiscord" type="button" onclick="document.getElementById('discordInput').value='';this.classList.add('hidden')"
+                              class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                              ✕
+                            </button>
+                          </div>
+
+                          <label class="block text-base mb-3">
+                                        Vk
+                                      </label>
+                                      <div class="relative mb-3">
+                                        <input id="vkInput" maxlength="20" type="text" placeholder="username или ID"
+                                          class="w-full p-3 pr-12 rounded-lg bg-black border-2 border-neutral-700 hover:border-red-600 focus:border-red-600 outline-none"
+                                          oninput="document.getElementById('clearVk').classList.toggle('hidden', this.value.length === 0)">
+                                        <button id="clearVk" type="button" onclick="document.getElementById('vkInput').value='';this.classList.add('hidden')"
+                                          class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 text-white rounded-full w-7 h-7 text-sm hover:bg-red-600 hover:scale-110 transition hidden">
+                                          ✕
+                                        </button>
+                                      </div>
+
+      </div>
+    </div>
+
+    <!-- КНОПКА -->
+    <button id="submitBtn" onclick="addCar()"
+      class="w-full py-4 bg-red-600 rounded-xl text-lg font-semibold hover:bg-red-500 transition">
+      Разместить объявление
+    </button>
+
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+
+
+</body>
+</html>
